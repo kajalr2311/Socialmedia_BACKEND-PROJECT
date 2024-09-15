@@ -1,0 +1,15 @@
+<%- include('partials/header')%>
+  <!--  -->
+  <%- include('partials/nav')%>
+    <!--  -->
+    <div class="flex items-center justify-center w-full h-full">
+        <div class="w-[60%] flex bg-white rounded  border-2 border-red-800 shadow-5xl mt-32">
+          <img src="<%= user.avatar.url%>" class="rounded-full w-[15%]
+          h-[30%]  mx-14 my-14 shadow-2xl " alt="">
+          <h1 class=" mx-10 my-20  text-black text-5xl font-bold ">hello <%= user.username%>👋</h1>
+          <a class="bg-red-200 px-6 py-3 ml-1 rounded-3xl font-medium  my-36" href="/users/settings">Edit profile</a>
+        </div>
+    </div>
+
+    <%=posts%>
+        <%- include('partials/footer')%>

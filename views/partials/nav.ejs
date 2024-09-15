@@ -1,0 +1,31 @@
+<nav class="flex justify-between z-9  bg-pink-950 backdrop-blur-sm opacity-0.2 text-white py-5 px-4 pb-1 gap-10 w-full z-30 border-b-2 cursor-pointer h-[10vh] absolute">
+    <div class="text-2xl font-extrabold text-red-800 tracking-tighter ">Media</div>
+    <div class="flex gap-x-10 font-medium">
+        <% if(user) { %>
+            <a href="/users/profile">Home</a>
+            <% }else { %>
+                <a href="/">Home</a>
+
+                <% } %>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/createpost">Create Posts</a>
+    </div>
+
+    <div>
+
+
+        <% if(user) { %>
+            <a href="/users/settings" class="text-black font-bold ">
+                <img class="rounded-full w-[50px]
+                 h-[50px] border-solid border-2 border-red-800  " src="<%= user.avatar.url%>" alt=""></a>
+
+            <% }else { %>
+                <a class="bg-red-800 text-white px-5 py-2 rounded  hover:bg-red-900" href="/login">Login</a>
+
+
+                <% } %>
+
+    </div>
+
+</nav>

@@ -1,0 +1,80 @@
+<%- include('partials/header')%>
+  <!--  -->
+  <%- include('partials/nav')%>
+    <!--  -->
+    <div
+    class="createuser w-full bg-zinc-300 flex flex-col justify-center items-center "
+  >
+    <div
+      class="profile-image w-2/3 p-5 bg-white flex flex-col items-center rounded-lg relative mt-28"
+    >
+      <section class="upsection w-full h-32 bg-red-800 rounded-lg"></section>
+
+      <div  class="profile-image w-32 h-32 absolute left-10 top-10 overflow-hidden rounded-sm p-1">
+        <img class="avatarimage  w-[10vmax] h-[10vmax] object-cover" src="<%= user.avatar.url%>"
+          alt="No image Found">
+
+        <form method="post" class="avatarform hidden" action="/users/avatar/<%= user._id%>"
+          enctype="multipart/form-data">
+          <input class="avatarinput" type="file" name="avatar">
+        </form>
+
+      </div>
+      <section class="downsection w-full mt-8 flex justify-between">
+        <div class="left w-1/3 h-32 text-black p-4">
+          <h1 class="text-2xl font-bold">Name:<%=user.fullname%></h1>
+          <h1 class="text-xl font-regular">@:<%=user.username%></h1>
+          <a href="/users/delete/<%= user._id%>"
+            ><button class="px-4 py-2 bg-red-800 shadow-lg shadow-red-800/50 ... rounded-lg mt-10">
+              Delete
+            </button></a
+          >
+          <a href="/users/update/<%= user._id%>"
+            ><button class="px-4 py-2 bg-green-300 shadow-lg shadow-green-300/50 ... rounded-lg mt-10">
+              update
+            </button></a
+          >
+        </div>
+        <div class="right w-1/2 h-32 text-black">
+          <h1 class="text-2xl font-bold">Username:<%=user.email%></h1>
+          <h1 class="text-xl font-regular">email:<%=user.username%></h1>
+          <section class="mt-14 ">
+            <a href="/users/reset-password/<%= user._id%>"
+            ><button class="px-4 py-2 bg-cyan-500 shadow-lg shadow-cyan-500/50 ... rounded-lg ">
+              Reset password
+            </button></a
+          >
+          <a href="/post/createpost"
+            ><button class="px-4 py-2 bg-cyan-500 shadow-lg shadow-cyan-500/50 ... rounded-lg ">
+              Create Posts
+            </button></a
+          >
+          <a href="/users/logout" class="px-4 py-2 bg-cyan-500 shadow-lg shadow-cyan-500/50 ... rounded-lg "
+            >Logout</a
+          >
+          </section>
+         
+        </div>
+       
+      </section>
+      <%=user.posts%>
+    </div>
+
+    
+    <script>
+      const avatarimage = document.querySelector('.avatarimage');
+      const avatarinput = document.querySelector('.avatarinput');
+      const avatarform = document.querySelector('.avatarform');
+
+      avatarimage.addEventListener('click', () => {
+        avatarinput.click();
+      });
+
+      avatarinput.addEventListener('change', () => {
+        avatarform.submit();
+      });
+
+    </script>
+    <!-- --> 
+
+    <%- include('partials/footer')%>
